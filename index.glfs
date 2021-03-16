@@ -1,0 +1,15 @@
+{
+  fragmentShader: `
+    float readDepth(sampler2D depthSampler, vec2 coord) {
+      float fragCoordZ = texture2D(depthSampler, coord).x;
+      float viewZ = perspectiveDepthToViewZ(fragCoordZ, cameraNear, cameraFar);
+      return viewZToOrthographicDepth(viewZ, cameraNear, cameraFar);
+    }
+    
+    void mainImage(out vec4 fragColor, vec2 uv, sampler2D colorTex, sampler2D depthTex) {
+      float depth = readDepth(depthTex, uv);
+      fragColor.rgb = 1.0 - vec3(depth * 100.);
+      fragColor.a = 1.0;
+    }
+  `
+}

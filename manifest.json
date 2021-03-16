@@ -1,0 +1,6 @@
+{
+  "name": "depth-pass",
+  "description": "Depth Pass XRPackage",
+  "xr_type": "webxr-site@0.0.1",
+  "start_url": "index.glfs"
+}
